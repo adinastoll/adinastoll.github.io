@@ -1,147 +1,193 @@
-[English] [[日本語](https://github.com/MrGreensWorkshop/MrGreen-JekyllTheme/blob/main/README-jp.md#readme)] [[Português do Brasil](https://github.com/MrGreensWorkshop/MrGreen-JekyllTheme/blob/main/README-pt.md#readme)]
+# Quartz <!-- omit in toc -->
 
-## Mr. Green Jekyll Theme
+Quartz is a crystalline Jekyll theme for blog.
 
-<!-- readme -->
+Check the [demo](http://vfvong.blog/jekyll-theme-quartz/).
 
-[<img src="https://img.shields.io/github/issues/MrGreensWorkshop/MrGreen-JekyllTheme" alt="GitHub issues" data-no-image-viewer>](https://github.com/MrGreensWorkshop/MrGreen-JekyllTheme/issues)
-[<img src="https://img.shields.io/github/forks/MrGreensWorkshop/MrGreen-JekyllTheme" alt="GitHub forks" data-no-image-viewer>](https://github.com/MrGreensWorkshop/MrGreen-JekyllTheme/blob/main/README.md#readme)
-[<img src="https://img.shields.io/github/stars/MrGreensWorkshop/MrGreen-JekyllTheme" alt="GitHub stars" data-no-image-viewer>](https://github.com/MrGreensWorkshop/MrGreen-JekyllTheme/blob/main/README.md#readme)
-[<img src="https://img.shields.io/github/license/MrGreensWorkshop/MrGreen-JekyllTheme" alt="GitHub license" data-no-image-viewer>](https://github.com/MrGreensWorkshop/MrGreen-JekyllTheme/blob/main/LICENSE.txt)
-[<img src="https://shields.io/badge/Github%20Sponsors-Support%20me-blue?logo=GitHub+Sponsors" alt="Support me on GitHub Sponsors" data-no-image-viewer>](https://github.com/sponsors/MrGreensWorkshop "Support me on GitHub Sponsors")
-[<img src="https://shields.io/badge/Patreon-Support%20me-blue?logo=Patreon" alt="Support me on Patreon" data-no-image-viewer>](https://patreon.com/MrGreensWorkshop "Support me on Patreon")
-[<img src="https://shields.io/badge/Ko--fi-Tip%20me-blue?logo=kofi" alt="Tip me via Ko-fi" data-no-image-viewer>](https://ko-fi.com/MrGreensWorkshop "Tip me via Ko-fi")
+![screenshot](screenshot.png)
 
+## Highlight Features <!-- omit in toc -->
+
+- Support the CSS resets [Normalize](https://github.com/necolas/normalize.css)
+- Support [Font Awesome](https://fontawesome.com/)
+- Support [MathJax](https://www.mathjax.org/)
+- Support [Disqus](https://disqus.com/)
+- Support [Google Analytics 4](https://analytics.google.com/analytics/web/)
+- Light and dark mode, via [`prefers-color-scheme`](https://web.dev/prefers-color-scheme/)
+- Archive pages implemented in pure [Liquid](https://shopify.github.io/liquid/)
+
+## Table of Contents <!-- omit in toc -->
+
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Basic Configuration](#basic-configuration)
+  - [Specifying the Page Language](#specifying-the-page-language)
+  - [Customizing the Head](#customizing-the-head)
+  - [Navigation](#navigation)
+  - [Social Links](#social-links)
+  - [Archive Pages](#archive-pages)
+  - [MathJax](#mathjax)
+  - [Disqus](#disqus)
+  - [Google Analytics 4](#google-analytics-4)
+  - [More Customization](#more-customization)
+- [Contributing](#contributing)
+- [Development](#development)
+- [License](#license)
+
+## Installation
+
+Add this line to your Jekyll site's `Gemfile`:
+
+```ruby
+gem "jekyll-theme-quartz"
+```
+
+And add this line to your Jekyll site's `_config.yml`:
+
+```yaml
+theme: jekyll-theme-quartz
+```
+
+And then execute:
+
+    $ bundle
+
+Or install it yourself as:
+
+    $ gem install jekyll-theme-quartz
+
+If your website is hosted on GitHub Pages, you can install this theme via [`jekyll-remote-theme`](https://github.com/benbalter/jekyll-remote-theme).
+
+Add the following to your `Gemfile`:
+
+```ruby
+gem "jekyll-remote-theme"
+```
+
+And add this line to your Jekyll site's `_config.yml`:
+
+```yml
+plugins:
+  - jekyll-remote-theme
+```
+
+Add the following to your site's `_config.yml`:
+
+```yml
+remote_theme: vfvong/jekyll-theme-quartz
+```
+
+## Usage
+
+### Basic Configuration
+
+You can refer to the [`_config.yml`](https://github.com/vfvong/jekyll-theme-quartz/blob/gh-pages/_config.yml) of the demo to set some basic configuration of your site.
+
+### Specifying the Page Language
+
+You can specify the language on each page by setting the `lang` property. If the property is not set, the `site.lang` would be referred. If the `site.lang` is not set, the default value `en` would be applied.
+
+### Customizing the Head
+
+If you want to put more data into the `<head>`, you don't need to copy the whole `_includes/head.html` file from this repo and overwrite it in your repo. You just need to create a `_includes/custom-head.html` file in your repo, and put some data into there. These data will be automatically imported into the `<head>`.
+
+### Navigation
+
+The navigation in Quartz is very easy to configure, just specify the titles and URLs in the [`_data/navigation.yml`](https://github.com/vfvong/jekyll-theme-quartz/blob/gh-pages/_data/navigation.yml) file, for example,
+
+```yml
+- title: Home
+  url: /
+- title: About
+  url: /about.html
+- title: Archive
+  url: /archive.html
+```
+
+### Social Links
+
+The social links in Quartz is also very easy to connfigure. You don't need to import any large SVG file to render the icons because Quartz supports the [Font Awesome](https://fontawesome.com/). Specify the titles, URLs, and icons in the [`_data/social.yml`](https://github.com/vfvong/jekyll-theme-quartz/blob/gh-pages/_data/social.yml) file, for example,
+
+```yml
+- title: Email
+  url: mailto:vfvong@gmail.com
+  icon: fas fa-envelope
+- title: Twitter
+  url: https://twitter.com/vfvong
+  icon: fab fa-twitter
+- title: GitHub
+  url: https://github.com/vfvong
+  icon: fab fa-github
+```
+
+### Archive Pages
+
+Quartz provides a template `archive` to archive posts by years, categories, or tags.
+
+If you want to show an archive page of years, just create a file and put these front matter in it:
+
+```yml
 ---
+layout: archive
+type: years
+title: Archive by Years
+---
+```
 
-<div align="center">
-  <img src="https://jekyll-theme-mrgreen-demo.mrgreensworkshop.com/assets/img/posts/mock1.jpg" max-height="500" alt="screen_mock">
-  <br><br>
-  <a href="https://jekyll-theme-mrgreen-demo.mrgreensworkshop.com" style="font-weight: bold;" >Click here for live demo</a>
-</div>
+Similarly, if you want to show an archive page of categories, just create a file and put these front matter in it:
 
+```yml
+---
+layout: archive
+type: categories
+title: Archive by Categories
+---
+```
 
-### Introduction
+Besides, if you want the categories and tags displayed in the post to link to the archive pages, you need to configure the paths to the category and tag archive pages in the `_config.yml` file, for example:
 
-<!-- outline-start -->
+```yml
+categories_path: /categories/
+tags_path: /tags/
+```
 
-[Mr. Green](https://github.com/MrGreensWorkshop/MrGreen-JekyllTheme) is a multilingual theme generated with [Jekyll](https://jekyllrb.com/) and fully compatible with [GitHub Pages](https://pages.github.com/).
+### MathJax
 
-<!-- outline-end -->
+Quartz relies on the [MathJax](https://www.mathjax.org/) to render math. The MathJax is disabled by default. You need to set `math: true` on the page where you want to enable the MathJax.
 
-I was going to make my website and thought if I did it as a template, I could share it with the open source community. That's why I decided to build it as a theme. I've worked so hard to make this possible, so please consider [supporting my work](#you-can-support-my-work). Thanks.
+### Disqus
 
-### Features
+To enable [Disqus](https://disqus.com/), just set the [Disqus shortname](https://help.disqus.com/en/articles/1717111-what-s-a-shortname) in the `_config.yml`, for example,
 
-- Multilingual web site
-  - English (default), Japanese, Brazilian Portuguese
-- Recommended language offer feature
-- Auto Navigation Button adder with icon enable disable options
-- Layouts for `Home`, `About`, `Archives`, `Post-list`, `Links`, `Projects` and more
-- Color scheme switching options (Dark light)
-- Auto Contact option adder
-- Auto image referrer (no need to add full path for images. Just add `:` in front of it.)
-- image lazy loader, image viewer
-- Cool Footer with creative commons licensing
-- Movable Table of Contents modal box for Posts
-- Post Share Options
-- Post-listing by Category or Tags
-- Comments for posts
-  - [Disqus](https://disqus.com)
-- Selectable numbered pagination or scroll to load type
-- Sitemap feature
-- Search Engine Optimization (SEO)
-  - [Schema Markup](https://schema.org)
-  - [Open Graph](https://ogp.me/)
-  - [Twitter](https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary)
-- Analytics (Google Analytics)
-- Cookie consent feature
-- Contact form feature (Google Forms)
-- Site Search feature
-- Code Compression for small footprint (`HTML` `JS` `SCSS`)
-- Mobile App support
-- Mobile device friendly (Tested on Android and IOS)
-- Well organized folder structure for developers (Tested on Chrome, Safari, FireFox)
+```yml
+disqus: <your disqus shortname>
+```
 
-### Installation
+### Google Analytics 4
 
-#### Github pages
+Quartz support the [Google Analytics 4](https://support.google.com/analytics/answer/10089681). To enable it, just set the Measurement ID in the `_config.yml`, for example,
 
-1. [Fork the repo](https://github.com/MrGreensWorkshop/MrGreen-JekyllTheme/fork).
-1. Edit \_config.yml and change `url` like below and push changes.
+```yml
+google_analytics: G-XXXXXXXXXX
+```
 
-   ```yaml
-   url: "https://your_github_user_name.github.io"
-   ```
+### More Customization
 
-1. Rename the repo name to `your_github_user_name.github.io`
-1. Check Deploy status `Actions` tab on the repo.
-1. When it's turned to green, your site is up and running at `https://your_github_user_name.github.io`
+You can easily modify some styles of this theme, such as colors and fonts. You don't have to copy a lot of CSS into your repository, just copy [`_sass/quartz/_variables.scss`](_sass/quartz/_variables.scss) and change the variable value.
 
-#### Local build
+## Contributing
 
-1. [Install Jekyll](https://jekyllrb.com/docs/installation/) to your OS
-1. Clone or [download](https://github.com/MrGreensWorkshop/MrGreen-JekyllTheme/releases/latest) the repo, in command prompt go to the folder run `bundle install` command
-1. Build using `bundle exec jekyll serve --watch --host 0.0.0.0 --safe` command
-    - with `--host 0.0.0.0` parameter you can access web server from same lan.
-    - with `--safe` parameter you can make sure no 3rd party plugin added. (for Github pages development)
-1. Your page will be up and running at the `0.0.0.0:4000/` address.
+Bug reports and pull requests are welcome on GitHub at [https://github.com/vfvong/jekyll-theme-quartz](https://github.com/vfvong/jekyll-theme-quartz). This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
-### Documentation
+## Development
 
-Check out [Mr. Green theme tutorials playlist](https://www.youtube.com/playlist?list=PLAymxPbYHgl-fFy5can7uZBMJtFWVcphD) on YouTube
+To set up your environment to develop this theme, run `bundle install`.
 
-### Credits
+Your theme is setup just like a normal Jekyll site! To test your theme, run `bundle exec jekyll serve` and open your browser at `http://localhost:4000`. This starts a Jekyll server using your theme. Add pages, documents, data, etc. like normal to test your theme's contents. As you make modifications to your theme and to your content, your site will regenerate and you should see the changes in the browser after a refresh, just like normal.
 
-I want to thank these projects that gave me an opportunity to build my web site.
+When your theme is released, only the files in `_layouts`, `_includes`, `_sass` and `assets` tracked with Git will be bundled.
+To add a custom directory to your theme-gem, please edit the regexp in `jekyll-theme-quartz.gemspec` accordingly.
 
-- [Jekyll](https://jekyllrb.com/) is a static site generator. It takes text written in your favorite markup language and uses layouts to create a static website. You can tweak the site’s look and feel, URLs, the data displayed on the page, and more. It is a wonderful project which is maintained by volunteers.
+## License
 
-- [GitHub Pages](https://pages.github.com/) Hosted directly from your GitHub repository. Just push the changes and the site will be automatically generated.
-
-Some of the sites that I find useful while I'm working on this project. [links page](https://jekyll-theme-mrgreen-demo.mrgreensworkshop.com/tabs/links.html)
-
-### You Can Support My Work
-
-Creating projects starting from nothing takes a great amount of time. Much appreciated if you consider supporting me so that I can continue projects like this and creating new contents for everyone.
-
-- You can be one of my [GitHub Sponsors](https://github.com/sponsors/MrGreensWorkshop "Support me on GitHub Sponsors") (monthly or one time)
-- You can be one of my [Patreons](https://patreon.com/MrGreensWorkshop "Be my Patron") (monthly)
-- You can tip me via [Ko-fi](https://ko-fi.com/MrGreensWorkshop "Tip Me via Ko-fi") (one time)
-
-### Contribute
-
-Pull Requests are welcome. Please check the instructions in the Issues and Pull Request templates.
-
-### Contributors
-
-Thank you for your contributions!
-
-- Brazilian Portuguese translation by [Vitor DallAcqua](https://github.com/fandangos).
-
-### License
-
-As it says in the [MIT license](https://github.com/MrGreensWorkshop/MrGreen-JekyllTheme/blob/main/LICENSE.txt), you can use this theme anywhere as long as you include the license and copyright notice.
-
-`Copyright (c) 2022 Mr. Green's Workshop https://www.MrGreensWorkshop.com`
-
-Please add link to my page or leave the "Pwrd by Mr. Green" link in the footer so I can get credit for my work.
-
-Thank you!
-
-### Other Licenses
-
-Mr. Green Jekyll Theme incorporates libraries written below. Without these libraries, I couldn't make this project possible.
-
-| Library                              | file |
-| :----------------------------------- | ---- |
-| [jQuery v3.6.0](https://github.com/jquery/jquery/tree/3.6.0), Copyright [OpenJS Foundation](https://openjsf.org) and other contributors. jQuery is distributed under the terms of the MIT License. | [jquery-3.6.0.min.js](https://github.com/MrGreensWorkshop/MrGreen-JekyllTheme/blob/main/assets/js/jquery-3.6.0.min.js) |
-| [Bootstrap v3.3.7](https://github.com/twbs/bootstrap/tree/v3.3.7), Copyright (c) 2011-2016 Twitter, Inc. Bootstrap is distributed under the terms of the MIT License. | [bootstrap.min.js](https://github.com/MrGreensWorkshop/MrGreen-JekyllTheme/blob/main/assets/js/bootstrap.min.js), [bootstrap.min.css](assets/css/bootstrap.min.css) |
-| [Bootstrap Table of Contents v0.4.1](https://github.com/afeld/bootstrap-toc/tree/v0.4.1), Copyright (c) 2015 Aidan Feldman Aidan Feldman. Bootstrap Table of Contents is distributed under the terms of the MIT License. | [bootstrap-toc.min.js](https://github.com/MrGreensWorkshop/MrGreen-JekyllTheme/blob/main/assets/js/bootstrap-toc.min.js), [bootstrap-toc.min.css](assets/css/bootstrap-toc.min.css) |
-| [Font Awesome v4.7.0](https://github.com/FortAwesome/Font-Awesome/tree/v4.7.0), Copyright (c) 2017 Dave Gandy. The Font Awesome font is distributed under the terms of the [SIL OFL 1.1](http://scripts.sil.org/OFL). Font Awesome CSS, LESS, and Sass files are distributed under the terms of the [MIT License](https://opensource.org/licenses/mit-license.html). | [font-awesome.min.css](https://github.com/MrGreensWorkshop/MrGreen-JekyllTheme/blob/main/assets/css/font-awesome.min.css), [FontAwesome](https://github.com/MrGreensWorkshop/MrGreen-JekyllTheme/blob/main/assets/fonts/) |
-| [Lozad.js v1.16.0](https://github.com/ApoorvSaxena/lozad.js/tree/v1.16.0), Copyright (c) 2017 Apoorv Saxena. Lozad.js is distributed under the terms of the MIT License. | [lozad.min.js](https://github.com/MrGreensWorkshop/MrGreen-JekyllTheme/blob/main/assets/js/lozad.min.js) |
-| [Magnific Popup v1.1.0](https://github.com/dimsemenov/Magnific-Popup/tree/1.1.0), Copyright (c) 2014-2016 Dmitry Semenov, http://dimsemenov.com. Magnific Popup is distributed under the terms of the MIT License. | [jquery.magnific-popup.min.js](https://github.com/MrGreensWorkshop/MrGreen-JekyllTheme/blob/main/assets/js/jquery.magnific-popup.min.js), [magnific-popup.css](assets/css/magnific-popup.css) |
-| [Simple-Jekyll-Search v1.9.2](https://github.com/christian-fei/Simple-Jekyll-Search/tree/v1.9.2), Copyright (c) 2015 Christian Fei. Simple-Jekyll-Search is distributed under the terms of the MIT License. | [simple-jekyll-search-1.9.2.min.js](https://github.com/MrGreensWorkshop/MrGreen-JekyllTheme/blob/main/assets/js/simple-jekyll-search-1.9.2.min.js) |
-| [Compress HTML in Jekyll v3.1.0](https://github.com/penibelst/jekyll-compress-html/tree/v3.1.0), Copyright (c) 2014 Anatol Broder. Compress HTML in Jekyll is distributed under the terms of the MIT License. | [compress.liquid](https://github.com/MrGreensWorkshop/MrGreen-JekyllTheme/blob/main/_layouts/util/compress.liquid) |
-
-[Mr. Green Jekyll Theme](https://github.com/MrGreensWorkshop/MrGreen-JekyllTheme)
+The theme is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
