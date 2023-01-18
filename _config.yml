@@ -1,7 +1,7 @@
 title: Adina Stoll
 subtagline: Software Engineer @Microsoft
-tagline: Sharing the small learnings, big learnings, but mainly the ones in between.
-description: ''
+# tagline: Sharing the small learnings, big learnings, but mainly the ones in between.
+description: 'Sharing the small learnings, big learnings, but mainly the ones in between.'
 cover: /cover.jpg
 
 categories_path: /categories/
