@@ -10,6 +10,9 @@
           <h2 class="site-title">
             <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
           </h2>
+          {% if site.subtagline %}
+            <h5 class="site-tagline">{{ site.subtagline }}</h5>
+          {% endif %}
           {% if site.tagline %}
             <h5 class="site-tagline">{{ site.tagline }}</h5>
           {% endif %}
